@@ -6,11 +6,28 @@ NHL_red <- "#FFCCD8" # Use #C8102E for original red in the rules, #FFE6EB for li
 NHL_blue <- "#CCE1FF" # Use #0033A0 for original blue in the rules, #E6EFFF for lighter hue
 NHL_light_blue <- "#CCF5FF" # Use #41B6E6 for original crease blue in the rules, #E6F9FF for lighter hue
 
-nhl_rink_plot <- function () {
+nhl_rink_plot <- function (line_hue) {
   
   # Plotting an NHL rink completely following the NHL rule book:
   # https://cms.nhl.bamgrid.com/images/assets/binary/308893668/binary-file/file.pdf
   # Line widths, lengths, colours, all followed as closely as possible
+  
+  if(line_hue == "regulation"){
+    NHL_red <- "#C8102E" 
+    NHL_blue <- "#0033A0" 
+    NHL_light_blue <- "#41B6E6"
+  } else if(line_hue == "medium"){
+    NHL_red <- "#FFCCD8" 
+    NHL_blue <- "#CCE1FF" 
+    NHL_light_blue <- "#CCF5FF" 
+  } else if(line_hue == "lightest"){
+    NHL_red <- "#FFE6EB"
+    NHL_blue <- "#E6EFFF" 
+    NHL_light_blue <- "#E6F9FF"
+  } else {
+    stop( "Please chose a line_hue. Options are \'regulation\', \'medium\', or \'lightest\'.")
+  }
+    
   
 ggplot() +
   
